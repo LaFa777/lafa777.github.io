@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+
+   <head>
+   <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<style>
+.content {
+  position: absolute;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+}
+ul {
+padding-left: 7px;
+}
+</style>
+</head>
+<body>
+
+<div class = "content">
+    <div class="row">
+        <h3>
+            <p id="q" class="text-center"></p>
+        </h3>
+        <hr>
+        <div class="collapse" id="collapseExample">
+            <div class="well">
+                <span id="ans"></span>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="center-block" style="width:251px">
+                <div class="btn-group">
+                    <button type="button" onclick="r()" class="btn btn-default">ГОНИ ВОПРОС</button>
+                    <button type="button"  onclick="answer()" data-toggle="collapse" data-target="#collapseExample" class="btn btn-default">Показать ответ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+var items = [
+{q :"Планирующие документы, составляемые в рамках специального планирования?",a:"<ul><li>Целевые (достижимая цель)<li>Ситуационные</ul>"},
+{q :"Формы планирующих документов...",a:"<ul><li>Текстуальные<li>Табличные<li>Графические<li>Схематические</ul>"},
+{q :"Таблица типового плана включает...",a:"<ul><li>Порядковый номер (пункт)<li>Мероприятие (Описание, содержание)<li>Исполнитель<li>Срок исполнения<li>Примечание (Отметка о выполнении)</ul>"},
+{q :"Организация планирования включает...",a:"<ul><li>Выработку управленческого решения<li>Утверждение плана<li>Доведение плана до исполнителей и соисполнителей<li>Организация выполнения планированных мероприятий</ul>"},
+{q :"Выработка плана (управленческого решения) включает...",a:"<ul><li>Обобщение, систематизация и анализ информации<li>Сбор предложений в проект плана<li>Подготовка проекта плана<li>Согласование проекта плана соответственными исполнителями и соисполнителями</ul>"},
+{q :"Инновация (нововведение) - ?",a:"<ul><li>целенаправленное изменение, которое вносит в сферу внедрения новые, относительно стабильные элементы (новшества)</ul>"},
+{q :"Инновация в организации - ?",a:"<ul><li>целенаправленное, позитивное изменение параметров организации, которые способствуют развитию и повышению эффективности.</ul>"},
+{q :"Объектом инноватики является - ?",a:"<ul><li>разработка, создание и распространение новшеств в целом.</ul>"},
+{q :"Предметом инноватики является - ?",a:"<ul><li>качественный переход или перевод системы из одного состояния в другое (жизненный цикл)</ul>"},
+{q :"Жизненный цикл инновации включает...",a:"<ul><li>Зарождение.<li>Освоение.<li>Диффузия.<li>Рутинизация.</ul>"},
+{q :"Инновационный цикл включает...",a:"<ul><li>Разработка<li>Проектирование<li>Изготовление<li>Устаревание</ul>"},
+{q :"Классификации инноваций по типу новшества...",a:"<ul><li>Материально-технические<li>социальные</ul>"},
+{q :"К социальным инновациям относят...",a:"<ul><li>Экономические<li>Правовые<li>Управленческие</ul>"},
+{q :"К материально техническим инновациям относят инновации в области...",a:"<ul><li>техники<li>материалов<li>технологий</ul>"},
+{q :"Классификация инноваций по потенциалу...",a:"<ul><li>Модифицирующие<li>Комбинаторные<li>Радикальные</ul>"},
+{q :"Источники инновации...",a:"<ul><li>Передовой опыт<li>Научные достижения</ul>"},
+{q :"Этапы разработки и внедрения передового опыта...",a:"<ul><li>Выявление<li>Изучение<li>Пропаганда<li>Внедрение<li>Подведение итогов использования</ul>"},
+{q :"Что включает научную и научно-техническую деятельность...",a:"<ul><li>Фундаментальные научные исследования<li>Прикладные научные исследования</ul>"},
+{q :"Три типа экспериментальных разработок...",a:"<ul><li>Научно-исследовательские работы<li>Опытно-конструкторские работы<li>Опытно-технологические работы</ul>"},
+{q :"Фундаментальные научные исследования - ?",a:"<ul><li>это экспериментальная или теоретическая деятельность, направленная на получение новых знаний об основных закономерностях</ul>"}
+]
+var s = document.getElementById("q");
+var a = document.getElementById("ans");
+var item;
+function r() {
+    item = items[Math.floor(Math.random()*items.length)];
+    s.textContent = item.q
+    a.innerHTML = ""
+    $('#collapseExample').collapse('hide')
+}
+function answer()
+{
+    a.innerHTML = item.a
+    //a.innerHTML = item.a
+}
+</script>
+</body>
+</html>
