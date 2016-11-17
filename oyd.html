@@ -45,8 +45,9 @@ padding-left: 7px;
         <div class="row">
             <div class="center-block" style="width:251px">
                 <div class="btn-group">
-                    <button type="button" onclick="r()" class="btn btn-default">ГОНИ ВОПРОС</button>
-                    <button type="button"  onclick="answer()" data-toggle="collapse" data-target="#collapseExample" class="btn btn-default">Показать ответ</button>
+                    <button type="button" onclick="r()" class="btn btn-default">вопрос</button>
+                    <button type="button"  onclick="answer()" data-toggle="collapse" data-target="#collapseExample" class="btn btn-default">ответ</button>
+                    <button type="button" onclick="z()" class="btn btn-default">знаю</button>
                 </div>
             </div>
         </div>
@@ -132,6 +133,11 @@ var a = document.getElementById("ans");
 var item;
 function r() {
     item = items[Math.floor(Math.random()*items.length)];
+    if (items.length == 0)
+    {
+        s.innerHTML = "Больше нет вопросов..."
+        return false
+    }
     s.textContent = item.q
     a.innerHTML = ""
     $('#collapseExample').collapse('hide')
@@ -140,6 +146,12 @@ function answer()
 {
     a.innerHTML = item.a
     //a.innerHTML = item.a
+}
+function z()
+{
+    items = $.grep(items, function(e){ return item.q != e.q; });
+    console.log(items)
+    r()
 }
 </script>
 </body>
