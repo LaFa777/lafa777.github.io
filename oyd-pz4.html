@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+
+   <head>
+   <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<style>
+.content {
+  position: absolute;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+}
+ul {
+padding-left: 7px;
+}
+</style>
+</head>
+<body>
+
+<div class = "content">
+    <div class="row">
+        <h3>
+            <p id="q" class="text-center"></p>
+        </h3>
+        <hr>
+        <div class="collapse" id="collapseExample">
+            <div class="well">
+                <span id="ans"></span>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="center-block" style="width:200px">
+                <div class="btn-group">
+                    <button type="button" onclick="r()" class="btn btn-default">вопрос</button>
+                    <button type="button"  onclick="answer()" data-toggle="collapse" data-target="#collapseExample" class="btn btn-default">ответ</button>
+                    <button type="button" onclick="z()" class="btn btn-default">знаю</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+var items = [
+{q :"Принцип управления это...",a:"<ul><li>исходные, основополагающие требования которыми руководствуется субъект управления</ul>"},
+{q :"К познавательно-программирующим функциям относят...",a:"<ul><li>прогнозирование<li>планирование</ul>"},
+{q :"К основным требованиям, предъявляемым к управленческим решениям, относят?",a:"<ul><li>Научная обоснованность<li>Нормативная обоснованность<li>Своевременность<li>Конкретность<li>Непротиворечивость</ul>"},
+{q :"Классификация управленческих решений (виды и формы) по уровню управления?",a:"<ul><li>Стратегические<li>Тактические<li>Операционные</ul>"},
+{q :"Формы управленческих решений по форме изложения",a:"<ul><li>положения<li>распоряжения<li>планы<li>директивы<li>приказы</ul>"},
+{q :"Примерные сравнительные показатели для оценки альтернатив (Критерии оценки альтернатив)",a:"<ul><li>Степень достижения цели (выполнено/не выполнено)<li>Вероятность успешной реализации<li>Негативные последствия</ul>"},
+{q :"Чем обусловлена необходимость коррегирования в процессе исполнения решений?",a:"<ul><li>невозможность учета всех факторов при выработке решения<li>ошибки и неудачи исполнителей<li>вероятностный характер оценки результатов на этапах выработки решения<li>изменение ситуации в процессе исполнения решения</ul>"},
+{q :"Цель планирования?",a:"<ul><li>совершенствование деятельности путем эффективного использования сил и средств<li>на основе определения последовательности решения задач, обеспечение равномерности и ритмичности использования кадровых, финансовых, материально-технических и иных ресурсов</ul>"},
+{q :"Планирующие документы должны содержать...",a:"<ul><li>комплекс целей и задач на определенный период времени<li>способы решения<li>последовательность решения<li>сроки решения<li>исполнителей</ul>"},
+{q :"Виды планирования?",a:"<ul><li>Общее планирование<li>Специальное<li>Индивидуальное</ul>"},
+{q :"Формы планирующих документов...",a:"<ul><li>Текстуальные<li>Табличные<li>Графические<li>Схематические</ul>"},
+{q :"Выработка плана (управленческого решения) включает...",a:"<ul><li>Обобщение, систематизация и анализ информации<li>Сбор предложений в проект плана<li>Подготовка проекта плана<li>Согласование проекта плана соответственными исполнителями и соисполнителями</ul>"},
+{q :"Объектом инноватики является - ?",a:"<ul><li>разработка, создание и распространение новшеств в целом.</ul>"},
+{q :"Классификации инноваций по типу новшества...",a:"<ul><li>Материально-технические<li>социальные</ul>"},
+{q :"Источники инновации...",a:"<ul><li>Передовой опыт<li>Научные достижения</ul>"},
+{q :"Фундаментальные научные исследования - ?",a:"<ul><li>это экспериментальная или теоретическая деятельность, направленная на получение новых знаний об основных закономерностях</ul>"},
+{q :"Прикладные научные исследования - ?",a:"<ul><li>исследования, направленные преимущественно на применение новых знаний для достижения практических целей и решения конкретных задач</ul>"},
+{q :"Составные части делопроизводства...",a:"<ul><li>Документирование<li>Документооборот<li>Архивное дело</ul>"},
+{q :"Основные элементы(операции) документооборота?",a:"<ul><li>Прием корреспонденции<li>Сортировка документов<li>Регистрация документов<li>Рассмотрение документов<li>Исполнение документов<li>Отправка документов<li>Хранение документов<li>Уничтожение документов</ul>"},
+{q :"Регистрация документа - это...",a:"<ul><li>присвоение документу регистрационного номера<li>внесение данных о документе в регистрационно-учетную форму</ul>"}
+]
+var s = document.getElementById("q");
+var a = document.getElementById("ans");
+var item;
+function r() {
+    item = items[Math.floor(Math.random()*items.length)];
+    if (items.length == 0)
+    {
+        s.innerHTML = "Больше нет вопросов..."
+        return false
+    }
+    s.textContent = item.q
+    a.innerHTML = ""
+    $('#collapseExample').collapse('hide')
+}
+function answer()
+{
+    a.innerHTML = item.a
+    //a.innerHTML = item.a
+}
+function z()
+{
+    items = $.grep(items, function(e){ return item.q != e.q; });
+    console.log(items)
+    r()
+}
+</script>
+</body>
+</html>
